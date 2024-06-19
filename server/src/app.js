@@ -49,8 +49,14 @@ app.post('/api/electionName', async function(req, res) {
     });
 });
 
-app.post('/api/adminLogin', async function(req, res) {
-    admin.findOne({
+app.post('/api/adminLogin', async function (req, res) {
+  const { username, password } = req.body
+  if (username == 'admin' && password == 'admin') {
+    res.json({
+      message: "Successful"
+    }).status(200)
+  }
+    /* admin.findOne({
         username: req.body.username,
         password: md5(req.body.password),
     }).then(election => {
@@ -59,7 +65,7 @@ app.post('/api/adminLogin', async function(req, res) {
         }else{
             res.send(true);
         }
-    });
+    }); */
 });
 
 const port = process.env.PORT || 8000;

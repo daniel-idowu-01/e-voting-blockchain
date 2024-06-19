@@ -25,7 +25,8 @@ class Login extends Component {
             username: username,
             password: password,
         })
-        .then(function(response){ 
+          .then(function (response) { 
+          console.log(response)
             if(response.data){
                 window.location.assign("/newelection")
             }else{
